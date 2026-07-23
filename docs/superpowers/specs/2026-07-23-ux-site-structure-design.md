@@ -44,6 +44,19 @@ Development is expected to grow faster than Architecture or Migration
 since it absorbs three sub-topics; this is an accepted, known imbalance,
 not a problem to solve now (see Open Items).
 
+**Placement rule:** every content item belongs to exactly one section —
+no cross-listing. For governance content specifically, which straddles
+Architecture and Migration, use this test: framed around *how EDS is
+built/secured* → Architecture; framed around *what changes operationally
+when you adopt EDS* → Migration.
+
+**Label asymmetry is intentional:** only Development gets visible
+sub-topic labels (Authoring/Performance/Tooling), even though Architecture
+and Migration each also cover two distinct concerns (core topic +
+governance). This was considered and deliberately rejected — Architecture
+and Migration are judged simple enough to browse unlabeled; only
+Development's label system is in scope for v1.
+
 ## Page Templates
 
 Three reusable templates, one per hierarchy level (Home is singular,
@@ -54,8 +67,11 @@ just its own page.
 
 - **Home template**: 3 section tiles (Architecture, Migration,
   Development) and a "recently added" list (3-5 most recent items across
-  all sections, reverse-chronological). No bio content here — that lives
-  on the separate About page (see Navigation).
+  all sections, pure reverse-chronological — no per-section balancing).
+  This may skew toward Development given its faster growth; considered
+  and accepted as a minor, acceptable cost rather than something to
+  engineer around. No bio content here — that lives on the separate About
+  page (see Navigation).
 - **Section hub template**: flat, reverse-chronological list of all
   content items in that section. Each row shows: title, a format icon
   (article vs. video), and — for Development only — a sub-topic label
