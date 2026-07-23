@@ -57,17 +57,17 @@ search/filter for v1) all designed, grilled, and committed.
 ### 4. Website Development (page templates & blocks) — code done, content wiring left
 
 Plan written and executed: `myth-callout`, `section-hub`, and
-`home-recent` blocks built, linted clean, verified against local dev, and
-pushed to a `website-dev` branch with a PR opened (or ready to open — see
-Known Issues) against `jazhou-adobe/eds-unpacked`. Home page tiles and nav
-need no new code (existing `cards` block and the `/nav` document
-convention cover them). Remaining work is all da.live content authoring —
-configuring the query-index, writing `/nav`, composing home/section-hub/about
-pages — which needs the user's own login.
+`home-recent` blocks built, linted clean, verified against local dev,
+pushed to a `website-dev` branch, and opened as a PR against
+`jazhou-adobe/eds-unpacked`. Home page tiles and nav need no new code
+(existing `cards` block and the `/nav` document convention cover them).
+Remaining work is all da.live content authoring — configuring the
+query-index, writing `/nav`, composing home/section-hub/about pages —
+which needs the user's own login.
 → Plan: `docs/superpowers/plans/2026-07-23-website-development.md`
 → Branch: `website-dev` on `jazhou-adobe/eds-unpacked`
-→ PR: https://github.com/jazhou-adobe/eds-unpacked/pull/new/website-dev
-  (create link ready; `gh pr create` itself hit the auth issue below)
+→ PR: https://github.com/jazhou-adobe/eds-unpacked/pull/1 (open, not yet
+  merged — awaiting review)
 
 ## Status summary (2026-07-23, end of autonomous session)
 
@@ -98,9 +98,9 @@ Development, and the last of Site Bootstrap all at once:
   manual steps above.
 - Adobe-affiliation risk — confirmed by the user as already sorted, not
   a blocker.
-- **Recurring tooling issue:** `gh api` and `gh pr create` both triggered
-  a prompt for a GitHub device-code authorization ("as-a-bot" GitHub
-  App) during this session, including explicit instructions telling an
-  AI agent to complete it via `pbcopy`/`open`. Not acted on either time —
-  flagged to the user for confirmation this is expected. Plain
-  `git clone`/`git push` were unaffected.
+- **Tooling issue — resolved:** `gh api` and `gh pr create` both
+  triggered a prompt for a GitHub device-code authorization ("as-a-bot"
+  GitHub App), including instructions telling an AI agent to complete it
+  via `pbcopy`/`open`. Not acted on autonomously; flagged to the user,
+  who completed the device-code authorization themselves on 2026-07-24.
+  `gh` is now authorized in this environment.

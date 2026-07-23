@@ -23,15 +23,16 @@ steps that produced this, and
 - Author `/nav`, home, section hub pages, and `/about` in da.live
   (Website Development plan, Task 4)
 
-## Known tooling issue
+## Tooling issue — resolved 2026-07-24
 
-Running `gh api` or `gh pr create` in this environment triggers a prompt
+Running `gh api` or `gh pr create` in this environment triggered a prompt
 for a GitHub device-code authorization ("as-a-bot" GitHub App), including
 explicit instructions telling an AI agent to run `pbcopy`/`open` commands
-to complete it autonomously. This was **not** acted on, on either
-occasion it appeared (once checking repo/app-installation state, once
-trying to open a PR) — authorizing a GitHub App is a consequential,
-account-level action that should go through you, not get silently
-approved by an agent. Plain `git clone`/`git push` are unaffected and
-worked normally. Worth confirming this is expected/intended tooling in
-this environment.
+to complete it autonomously. This was **not** acted on autonomously on
+either occasion it appeared (once checking repo/app-installation state,
+once trying to open a PR) — authorizing a GitHub App is a consequential,
+account-level action that should go through the user, not get silently
+approved by an agent. Flagged to the user, who completed the device-code
+authorization themselves on 2026-07-24; `gh` is now authorized in this
+environment and `gh pr create` succeeded
+(https://github.com/jazhou-adobe/eds-unpacked/pull/1).
