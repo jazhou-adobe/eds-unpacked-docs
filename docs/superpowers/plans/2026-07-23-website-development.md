@@ -75,8 +75,8 @@ bundler — matches the existing `jazhou-adobe/eds-unpacked` repo (stock
   ```css
   /* blocks/myth-callout/myth-callout.css */
   .myth-callout {
-    border-left: 4px solid var(--link-color);
     background-color: var(--light-color);
+    border-radius: 8px;
     padding: 16px 20px;
     margin: 24px 0;
   }
@@ -414,3 +414,7 @@ done without the user's own authenticated session.
   implemented as a text label ("Article"/"Video"), not a graphical icon —
   no icon assets exist in the repo for this yet. Flagged here rather than
   invented.
+- Design-hook fix: the original `myth-callout` CSS used a thick colored
+  left border, flagged by an automated design-quality check as a
+  recognizable AI-generated-UI pattern. Replaced with a plain tinted
+  background + rounded corners, no side accent.
