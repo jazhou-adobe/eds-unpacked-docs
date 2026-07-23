@@ -81,3 +81,6 @@ technical scaffolding (block architecture, linting, local dev) is covered by
 - The `gh` CLI in this environment prompted for a GitHub device-code
   authorization ("as-a-bot" app) mid-session — flagged to the user, not
   acted on autonomously. Worth confirming this is expected tooling.
+- Adobe-affiliation risk (public site under `jazhou-adobe`, Adobe product
+  content, Adobe employee) — raised during plan review; confirmed by the
+  user as already sorted, not a blocker.
