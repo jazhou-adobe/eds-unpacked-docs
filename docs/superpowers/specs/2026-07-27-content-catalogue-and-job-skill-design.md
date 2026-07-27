@@ -125,46 +125,93 @@ with:
 
 ## The Idea-to-Jobs Skill
 
-A reusable skill (invocable via the Skill tool) that turns one raw idea
-into a structured **job breakdown** — the executable plan, not finished
-markdown and not throwaway scripts. It stops at the breakdown; a human
-(or a follow-on execution pass) does the actual writing/recording/DA
-steps.
+A reusable skill (invocable via the Skill tool) that turns one topic,
+tag, or raw idea into a **research-backed content-preparation package**
+plus the executable steps to get it published. By default it prepares the
+plan and content scaffolding, not finished prose; on explicit
+instruction it can also draft the full video script and/or full article
+prose.
 
-**Input:** a rough idea — a sentence, paragraph, or a catalogue title.
+**Input:** a topic, one or more tags, or a rough idea — a sentence,
+paragraph, or a catalogue title.
 
-**Output (a single structured breakdown):**
-1. Proposed title + slug.
-2. Section assignment (Architecture / Migration / Development, + sub-topic
-   if Development), applying the one-section rule and governance placement
-   test from the UX spec.
-3. Suggested tags — reuse-first from the controlled vocabulary, flagging
-   any genuinely new tag, and excluding section/sub-topic names.
-4. Article outline — intro angle, 3–6 H2 headings, where a myth-callout
-   fits, a "what's next" pointer, target word count (800–1,600).
-5. Video outline — a ≤5-min beat sheet (3–6 beats with rough timings).
-6. Execution checklist (the ordered "jobs"), drawn from the
-   content-workflow spec:
-   a. create draft from template at
-      `content/drafts/<section>/<slug>.md`, frontmatter filled;
-   b. write prose to the outline;
-   c. (optional) record the ≤5-min generic video — never raw workshop
-      footage;
-   d. (optional) host video, set `video_url`;
-   e. set `status: ready-for-da`, commit;
-   f. create the DA page at the matching path, compose blocks/sections,
-      paste body **[human/da.live login required]**;
-   g. add Metadata block — `section`/`subtopic`/`format` only, never
-      `persona`/`tags`/`source_workshop` **[human]**;
-   h. Preview via Sidekick, verify, Publish **[human]**;
-   i. set `status: published`, commit.
+### Step 1 — Research (always runs first)
+
+The skill researches the topic before planning, against current,
+high-trust sources (official EDS/AEM documentation first — `aem.live`,
+`da.live`, `adobe.com` — over blogs/forums):
+
+- **Topic facts:** verify the technical content is accurate and current
+  (EDS moves fast; do not rely on stale model knowledge). Cite the
+  sources used and explicitly flag anything that can't be confidently
+  verified rather than stating it as fact.
+- **Framing/phrasing:** suggest how to phrase and position the topic for
+  the audience (clear, confident, low-hype technical register per the UX
+  brief), noting common misconceptions worth a myth-callout.
+
+Requires web access (WebSearch/WebFetch).
+
+### Step 2 — Content-preparation package (default output)
+
+1. **Skeleton / abstract** — a short abstract (2–4 sentences) capturing
+   the article's angle and takeaway.
+2. **Key focus points** — the bulleted list of the most important things
+   the article must cover (and, where useful, what to deliberately leave
+   out).
+3. **Target persona** — which of the four author-only lenses (Architect,
+   Developer, IT Manager, Business Decision-Maker) benefits most from
+   this topic, with a one-line why. This sets the `persona` frontmatter
+   value; it stays author-only and is never surfaced to visitors.
+4. **Section breakdown** — the article's H2 structure: 3–6 headings with
+   a one-line note on each, where a myth-callout fits, and a "what's
+   next" pointer. Target 800–1,600 words (5–10 min read).
+5. **Video beat sheet** — a ≤5-min outline (3–6 beats with rough
+   timings).
+
+Plus the routing metadata:
+- Proposed **title + slug**.
+- **Section assignment** (Architecture / Migration / Development, +
+  sub-topic if Development), applying the one-section rule and governance
+  placement test from the UX spec.
+- **Suggested tags** — reuse-first from the controlled vocabulary,
+  flagging any genuinely new tag, excluding section/sub-topic names.
+
+### Step 3 — On-demand drafting (only when explicitly instructed)
+
+- **Full video script** — expands the beat sheet into a ≤5-min spoken
+  script.
+- **Full article prose** — writes the article body to the section
+  breakdown, at target length, in the researched framing/register.
+
+Default runs (Steps 1–2) never produce finished prose; Step 3 is opt-in
+per invocation.
+
+### Step 4 — Execution checklist (the ordered "jobs")
+
+Drawn from the content-workflow spec, so the output converts directly
+into steps to execute:
+a. create draft from template at `content/drafts/<section>/<slug>.md`,
+   frontmatter filled (title, section, subtopic, format, persona, tags,
+   status, source_workshop);
+b. write/paste the article prose (from Step 3 if generated, else authored
+   by hand to the section breakdown);
+c. (optional) record the ≤5-min generic video — never raw workshop
+   footage;
+d. (optional) host video, set `video_url`;
+e. set `status: ready-for-da`, commit;
+f. create the DA page at the matching path, compose blocks/sections,
+   paste body **[human/da.live login required]**;
+g. add Metadata block — `section`/`subtopic`/`format` only, never
+   `persona`/`tags`/`source_workshop` **[human]**;
+h. Preview via Sidekick, verify, Publish **[human]**;
+i. set `status: published`, commit.
 
 **Behavior notes:**
 - The skill reads the committed specs for its rules (section definitions,
   governance test, tag vocabulary, template, video constraint), so it
   stays consistent as those evolve.
-- Article-required / video-optional: the checklist marks steps c–d
-  optional; publishing (step h) does not depend on them.
+- Article-required / video-optional: steps c–d are optional; publishing
+  (step h) does not depend on them.
 - Run once per idea; running it across the 17 catalogue items is how the
   backlog gets seeded.
 - Steps f–h are inherently human (da.live/Sidekick login) — the skill
@@ -172,7 +219,10 @@ steps.
 
 ## Scope Boundaries (out of scope for this spec)
 
-- Writing any article prose or recording any video.
+- This spec (the document) does not itself produce any article prose or
+  video. The skill, once built, can draft prose/scripts on demand
+  (Step 3) — but that is a runtime action of the skill, not part of
+  authoring this spec.
 - Actually building the skill (implementation follow-on after review).
 - Updating `content/templates/` to add the `tags` field (implementation
   follow-on).
