@@ -4,6 +4,7 @@ section: architecture   # architecture | migration | development
 subtopic: ""            # only if section: development — authoring | performance | tooling
 format: video
 persona: []              # author-only planning tag(s) — architect | developer | it-manager | business-decision-maker. NEVER copy this into da.live.
+tags: []                 # author-only orthogonal keywords (exclude section/subtopic names). NEVER copy this into da.live.
 status: draft             # draft | ready-for-da | published
 source_workshop: ""       # private note only — which workshop inspired this. NEVER copy this into da.live.
 video_url: ""             # only fill in once the RE-RECORDED generic version is hosted somewhere. Never link a raw customer workshop recording.
